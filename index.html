@@ -3,414 +3,341 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Artisans Hub – Customized Gifts, Trophies & Mementos in OOTY</title>
-  <meta name="description" content="Shop customized gifts, trophies, mementos, photo gifts and corporate gifts at The Artisans Hub. Premium quality, personal touch. Order via WhatsApp from OOTY." />
-  <meta name="theme-color" content="#3d1f0a" />
-  <meta property="og:title" content="The Artisans Hub – Customized Gifts & Trophies" />
-  <meta property="og:description" content="Premium customized gifts, trophies, mementos and photo gifts. Order via WhatsApp: +91 63792 99336" />
-  <meta property="og:type" content="website" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="./css/style.css" />
+  <title>Admin Panel – The Artisans Hub</title>
+  <link rel="stylesheet" href="admin.css" />
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <a href="index.html" class="logo-area">
-      <img src="logo.jpeg" alt="The Artisans Hub" onerror="this.style.display='none'" />
-      <div class="logo-text">
-        <span class="brand">THE ARTISANS HUB</span>
-        <span class="tagline">Crafted with Love ♥</span>
-      </div>
-    </a>
-
-    <div class="search-bar">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="Search gifts, trophies, mementos…" autocomplete="off" />
-      <div class="search-results" id="searchResults"></div>
+<!-- ADMIN LOGIN -->
+<div id="adminLoginScreen" style="position:fixed;inset:0;background:#111827;display:flex;align-items:center;justify-content:center;z-index:9999">
+  <div style="background:white;padding:36px 30px;border-radius:18px;width:340px;box-shadow:0 10px 40px rgba(0,0,0,.25)">
+    <div style="text-align:center;margin-bottom:20px">
+      <img src="../logo.jpeg" alt="TAH" style="width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:10px" onerror="this.style.display='none'" />
+      <h2 style="margin:0;color:#3d1f00;font-size:20px">Admin Login</h2>
+      <p style="margin:4px 0 0;font-size:12px;color:#888">The Artisans Hub</p>
     </div>
-
-    <div class="header-actions">
-      <a href="https://wa.me/916379299336" target="_blank" rel="noopener" class="btn-whatsapp">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp Us
-      </a>
-      <button class="btn-cart" onclick="toggleCart()" aria-label="Open cart">
-        🛒
-        <span class="cart-count" id="cartCount" style="display:none">0</span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- NAV -->
-<nav role="navigation" aria-label="Product categories">
-  <div class="nav-inner">
-    <a href="#" class="nav-link active" onclick="filterByCategory('all'); return false;">🏠 Home</a>
-    <a href="#" class="nav-link" onclick="filterByCategory('customized-gifts'); return false;">🎨 Customized Gifts</a>
-    <a href="#" class="nav-link" onclick="filterByCategory('photo-gifts'); return false;">🖼️ Photo Gifts</a>
-    <a href="#" class="nav-link" onclick="filterByCategory('trophies'); return false;">🏆 Trophies</a>
-    <a href="#" class="nav-link" onclick="filterByCategory('mementos'); return false;">🎖️ Mementos</a>
-    <a href="#" class="nav-link" onclick="filterByCategory('corporate-gifts'); return false;">💼 Corporate Gifts</a>
-    <a href="#" class="nav-link" onclick="filterByCategory('stationery'); return false;">📝 Stationery</a>
-    <a href="#" class="nav-link" onclick="filterByCategory('wooden'); return false;">🪵 Wooden Items</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-text">
-      <h1>Gifts Crafted with<br/><span>Heart &amp; Soul</span></h1>
-      <p>From personalized photo gifts to premium trophies and corporate mementos — every piece tells your story. Custom-made with love in OOTY.</p>
-      <div class="hero-btns">
-        <a href="#productsSection" class="btn-primary" onclick="filterByCategory('all')">🛍️ Shop Now</a>
-        <a href="#customSection" class="btn-outline">🎨 Custom Orders</a>
-      </div>
-      <div class="hero-badges">
-        <div class="hero-badge"><span class="icon">✅</span> 100% Customizable</div>
-        <div class="hero-badge"><span class="icon">🚚</span> Fast Delivery</div>
-        <div class="hero-badge"><span class="icon">💬</span> WhatsApp Order</div>
-        <div class="hero-badge"><span class="icon">⭐</span> Premium Quality</div>
-      </div>
-    </div>
-    <div class="hero-image-grid">
-      <div class="hero-image-card" onclick="filterByCategory('photo-gifts')">
-        <div class="emoji">🖼️</div>
-        <h3>Photo Gifts</h3>
-        <p>Frames, mugs, clocks &amp; more</p>
-      </div>
-      <div class="hero-image-card" onclick="filterByCategory('trophies')">
-        <div class="emoji">🏆</div>
-        <h3>Trophies</h3>
-        <p>Crystal, acrylic &amp; wooden</p>
-      </div>
-      <div class="hero-image-card" onclick="filterByCategory('mementos')">
-        <div class="emoji">🎖️</div>
-        <h3>Mementos</h3>
-        <p>Corporate &amp; special occasions</p>
-      </div>
-      <div class="hero-image-card" onclick="filterByCategory('corporate-gifts')">
-        <div class="emoji">💼</div>
-        <h3>Corporate Gifts</h3>
-        <p>Bulk orders welcome</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES STRIP -->
-<div class="features-strip">
-  <div class="features-inner">
-    <div class="feature-item">
-      <span class="icon">🎨</span>
-      <h4>100% Custom</h4>
-      <p>Every item is made to your exact specifications with personal touches</p>
-    </div>
-    <div class="feature-item">
-      <span class="icon">⚡</span>
-      <h4>Quick Turnaround</h4>
-      <p>Fast production and delivery for urgent orders and events</p>
-    </div>
-    <div class="feature-item">
-      <span class="icon">💬</span>
-      <h4>WhatsApp Ordering</h4>
-      <p>Simple ordering via WhatsApp — share your requirements instantly</p>
-    </div>
-    <div class="feature-item">
-      <span class="icon">🏅</span>
-      <h4>Premium Quality</h4>
-      <p>High-quality materials and precision craftsmanship guaranteed</p>
-    </div>
-    <div class="feature-item">
-      <span class="icon">📦</span>
-      <h4>Bulk Orders</h4>
-      <p>Special pricing for corporate and bulk orders. Get a quote today</p>
-    </div>
-  </div>
-</div>
-
-<!-- TRUST BADGES -->
-<div class="trust-bar">
-  <div class="trust-inner">
-    <div class="trust-item"><span>⭐</span> 500+ Happy Customers</div>
-    <div class="trust-item"><span>🔒</span> Secure WhatsApp Checkout</div>
-    <div class="trust-item"><span>🇮🇳</span> Made in India</div>
-    <div class="trust-item"><span>💯</span> Quality Guarantee</div>
-  </div>
-</div>
-
-<!-- CATEGORY STRIP -->
-<div class="category-strip">
-  <div class="category-strip-inner">
-    <div class="section-header" style="margin-bottom:24px">
-      <div class="eyebrow">Browse by</div>
-      <h2 style="font-size:1.6rem">Product Categories</h2>
-    </div>
-    <div class="cat-grid" id="categoryGrid"></div>
-  </div>
-</div>
-
-<!-- PRODUCTS -->
-<div class="products-section" id="productsSection">
-  <div class="products-header">
-    <h2 id="productsHeading">All Products</h2>
-    <span class="product-count" id="productCount"></span>
-  </div>
-  <div class="products-grid" id="productsGrid">
-    <div class="loading-spinner" style="grid-column:1/-1"><div class="spinner"></div></div>
-  </div>
-</div>
-
-<!-- CUSTOMIZED GIFTS SECTION -->
-<div class="custom-section" id="customSection">
-  <div class="custom-section-inner">
-    <div class="section-header">
-      <div class="eyebrow">✦ Made Just For You ✦</div>
-      <h2>Customized Gift Items</h2>
-      <p>Everything can be personalized. Share your vision and we'll craft the perfect gift.</p>
-    </div>
-
-    <div class="custom-category-block">
-      <h3 class="custom-cat-title">🖼️ Photo-Based Gifts</h3>
-      <div class="custom-grid">
-        <div class="custom-card" onclick="quickOrder('Photo Frames')"><span class="icon">🪞</span><h3>Photo Frames</h3><p>Classic &amp; magic mirror frames</p></div>
-        <div class="custom-card" onclick="quickOrder('Photo Mugs')"><span class="icon">☕</span><h3>Photo Mugs</h3><p>Magic color-change mugs</p></div>
-        <div class="custom-card" onclick="quickOrder('Photo Keychains')"><span class="icon">🔑</span><h3>Photo Keychains</h3><p>Compact &amp; durable</p></div>
-        <div class="custom-card" onclick="quickOrder('Photo Clocks')"><span class="icon">🕐</span><h3>Photo Clocks</h3><p>Wall &amp; table clocks</p></div>
-        <div class="custom-card" onclick="quickOrder('Magic Mirror Photo Frames')"><span class="icon">✨</span><h3>Magic Mirror</h3><p>LED illuminated frames</p></div>
-        <div class="custom-card" onclick="quickOrder('Photo Cushions')"><span class="icon">🛋️</span><h3>Photo Cushions</h3><p>Soft &amp; vibrant prints</p></div>
-        <div class="custom-card" onclick="quickOrder('Photo Calendars')"><span class="icon">📅</span><h3>Photo Calendars</h3><p>12-month personalized</p></div>
-        <div class="custom-card" onclick="quickOrder('Wooden Engraved Plaques')"><span class="icon">🪵</span><h3>Wooden Plaques</h3><p>Laser engraved</p></div>
-      </div>
-    </div>
-
-    <div class="custom-category-block">
-      <h3 class="custom-cat-title">🏆 Trophies</h3>
-      <div class="custom-grid">
-        <div class="custom-card" onclick="quickOrder('Gold/Silver Plastic Trophies')"><span class="icon">🥇</span><h3>Standard Trophies</h3><p>Gold, silver &amp; cup style</p></div>
-        <div class="custom-card" onclick="quickOrder('Metal Trophies')"><span class="icon">🏅</span><h3>Metal Trophies</h3><p>Star &amp; cup awards</p></div>
-        <div class="custom-card" onclick="quickOrder('Acrylic Trophies with Engraving')"><span class="icon">💎</span><h3>Acrylic Trophies</h3><p>Custom engraving</p></div>
-        <div class="custom-card" onclick="quickOrder('Wooden Trophies')"><span class="icon">🌳</span><h3>Wooden Trophies</h3><p>Natural finish</p></div>
-        <div class="custom-card" onclick="quickOrder('Crystal Awards')"><span class="icon">🔮</span><h3>Crystal Awards</h3><p>Premium executive gifts</p></div>
-        <div class="custom-card" onclick="quickOrder('Glass Trophies')"><span class="icon">🫙</span><h3>Glass Trophies</h3><p>Sandblasted engraving</p></div>
-        <div class="custom-card" onclick="quickOrder('Sports Trophies')"><span class="icon">⚽</span><h3>Sports Trophies</h3><p>Schools &amp; colleges</p></div>
-        <div class="custom-card" onclick="quickOrder('Corporate Awards')"><span class="icon">🏢</span><h3>Corporate Awards</h3><p>Achievement &amp; appreciation</p></div>
-      </div>
-    </div>
-
-    <div class="custom-category-block">
-      <h3 class="custom-cat-title">🎖️ Mementos</h3>
-      <div class="custom-grid">
-        <div class="custom-card" onclick="quickOrder('Acrylic Mementos with Logo')"><span class="icon">🎖️</span><h3>Acrylic Mementos</h3><p>Logo &amp; message</p></div>
-        <div class="custom-card" onclick="quickOrder('Wooden Engraved Mementos')"><span class="icon">🪵</span><h3>Wooden Mementos</h3><p>Deep laser engraved</p></div>
-        <div class="custom-card" onclick="quickOrder('Glass Mementos')"><span class="icon">🫗</span><h3>Glass Mementos</h3><p>Elegant &amp; modern</p></div>
-        <div class="custom-card" onclick="quickOrder('Metal Plates with Engraving')"><span class="icon">🏷️</span><h3>Metal Plates</h3><p>Precision engraving</p></div>
-        <div class="custom-card" onclick="quickOrder('Retirement Gift Set')"><span class="icon">🎁</span><h3>Retirement Gifts</h3><p>Special milestone sets</p></div>
-        <div class="custom-card" onclick="quickOrder('Farewell Mementos')"><span class="icon">👋</span><h3>Farewell Mementos</h3><p>Honor a colleague's journey</p></div>
-        <div class="custom-card" onclick="quickOrder('Guest of Honor Gifts')"><span class="icon">⭐</span><h3>Guest of Honor</h3><p>Prestigious gifts</p></div>
-        <div class="custom-card" onclick="quickOrder('Anniversary Souvenirs')"><span class="icon">🎊</span><h3>Anniversary Souvenirs</h3><p>Corporate milestones</p></div>
-      </div>
-    </div>
-
-    <div class="custom-category-block">
-      <h3 class="custom-cat-title">📝 Stationery &amp; More</h3>
-      <div class="custom-grid">
-        <div class="custom-card" onclick="quickOrder('Branded Notebooks')"><span class="icon">📓</span><h3>Notebooks</h3><p>Hardbound with branding</p></div>
-        <div class="custom-card" onclick="quickOrder('Executive Pen Sets')"><span class="icon">✒️</span><h3>Pen Sets</h3><p>Metal executive pens</p></div>
-        <div class="custom-card" onclick="quickOrder('Corporate Gift Hampers')"><span class="icon">🎀</span><h3>Gift Hampers</h3><p>Curated corporate sets</p></div>
-        <div class="custom-card" onclick="quickOrder('Employee Welcome Kits')"><span class="icon">💼</span><h3>Welcome Kits</h3><p>New employee onboarding</p></div>
-      </div>
-    </div>
-
-    <div class="custom-cta">
-      <p>Can't find what you're looking for? Contact us for fully custom orders!</p>
-      <a href="https://wa.me/916379299336?text=Hi! I need a custom order from The Artisans Hub." target="_blank" rel="noopener" class="btn-primary">
-        💬 WhatsApp for Custom Order
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section class="section">
-  <div class="section-header">
-    <div class="eyebrow">Our Story</div>
-    <h2>Crafted with Passion</h2>
-    <div class="divider"><div class="diamond"></div></div>
-    <p>The Artisans Hub is your destination for premium customized gifts, trophies, and mementos. Based in OOTY, we craft each item with care and personal attention — because every gift should tell a story.</p>
-  </div>
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-number">500+</div>
-      <div class="stat-label">HAPPY CUSTOMERS</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">100+</div>
-      <div class="stat-label">PRODUCT TYPES</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">5+</div>
-      <div class="stat-label">YEARS EXPERIENCE</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number">24h</div>
-      <div class="stat-label">QUICK DELIVERY</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <img src="logo.jpeg" alt="The Artisans Hub" onerror="this.style.display='none'" />
-      <h3>The Artisans Hub</h3>
-      <p>Premium customized gifts, trophies, mementos and corporate gifts. Crafted with love and delivered with care from OOTY, Tamil Nadu.</p>
-      <div style="margin-top:20px">
-        <a href="https://wa.me/916379299336" target="_blank" rel="noopener" class="btn-whatsapp" style="display:inline-flex">
-          💬 +91 63792 99336
-        </a>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Products</h4>
-      <ul>
-        <li><a href="#" onclick="filterByCategory('photo-gifts'); return false;">Photo Gifts</a></li>
-        <li><a href="#" onclick="filterByCategory('trophies'); return false;">Trophies</a></li>
-        <li><a href="#" onclick="filterByCategory('mementos'); return false;">Mementos</a></li>
-        <li><a href="#" onclick="filterByCategory('corporate-gifts'); return false;">Corporate Gifts</a></li>
-        <li><a href="#" onclick="filterByCategory('stationery'); return false;">Stationery</a></li>
-        <li><a href="#" onclick="filterByCategory('wooden'); return false;">Wooden Items</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="#productsSection">About Us</a></li>
-        <li><a href="#customSection">Custom Orders</a></li>
-        <li><a href="https://wa.me/916379299336" target="_blank" rel="noopener">Contact Us</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="https://wa.me/916379299336" target="_blank" rel="noopener">📱 +91 63792 99336</a></li>
-        <li><a href="mailto:info@theartisanshub.in">✉️ info@theartisanshub.in</a></li>
-        <li><span>📍 OOTY, Tamil Nadu</span></li>
-        <li><span>🕐 Mon–Sun: 9AM – 7PM</span></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom-wrap">
-    <div class="footer-bottom">
-      <p>© 2026 The Artisans Hub. All rights reserved. Crafted with ♥ in OOTY, Tamil Nadu.</p>
-      <div class="social-links">
-        <a href="#" class="social-link" aria-label="Facebook">📘</a>
-        <a href="#" class="social-link" aria-label="Instagram">📸</a>
-        <a href="https://wa.me/916379299336" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">💬</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- CART SIDEBAR -->
-<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-<div class="cart-sidebar" id="cartSidebar" role="dialog" aria-label="Shopping cart">
-  <div class="cart-header">
-    <h3>🛒 Your Cart</h3>
-    <button class="btn-close" onclick="closeCart()" aria-label="Close cart">✕</button>
-  </div>
-  <div class="cart-items" id="cartItems"></div>
-  <div class="cart-footer">
-    <div class="cart-total">
-      <span>Total</span>
-      <span id="cartTotal">₹0</span>
-    </div>
-    <button class="btn-primary" style="width:100%;justify-content:center" onclick="openOrderModal()">
-      📦 Place Order via WhatsApp
+    <input id="adminUser" type="text" placeholder="Username"
+      style="width:100%;padding:12px;margin-bottom:12px;border:1px solid #ddd;border-radius:10px;box-sizing:border-box;font-size:14px">
+    <input id="adminPass" type="password" placeholder="Password"
+      style="width:100%;padding:12px;margin-bottom:18px;border:1px solid #ddd;border-radius:10px;box-sizing:border-box;font-size:14px">
+    <button onclick="adminLogin()"
+      style="width:100%;padding:13px;background:#8B5E3C;color:white;border:none;border-radius:10px;font-weight:bold;cursor:pointer;font-size:15px;letter-spacing:0.5px">
+      Login
     </button>
-  </div>
-</div>
-
-<!-- ORDER MODAL -->
-<div class="modal-overlay" id="orderModal" role="dialog" aria-modal="true" aria-label="Place order">
-  <div class="modal">
-    <div class="modal-header">
-      <h3>📦 Place Your Order</h3>
-      <p>Fill in your details and we'll confirm via WhatsApp</p>
-    </div>
-    <div class="modal-body">
-      <div class="order-summary-box" id="orderSummaryText"></div>
-      <div class="form-group">
-        <label for="orderName">Your Name *</label>
-        <input type="text" id="orderName" placeholder="Enter your full name" autocomplete="name" />
-      </div>
-      <div class="form-group">
-        <label for="orderPhone">WhatsApp / Phone Number *</label>
-        <input type="tel" id="orderPhone" placeholder="+91 XXXXX XXXXX" autocomplete="tel" />
-      </div>
-      <div class="form-group">
-        <label for="orderAddress">Delivery Address</label>
-        <textarea id="orderAddress" placeholder="Enter your delivery address" autocomplete="street-address"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="orderNotes">Special Notes / Customization Details</label>
-        <textarea id="orderNotes" placeholder="Any customization requirements, text to engrave, photo details, etc."></textarea>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn-outline btn-outline-dark" onclick="closeOrderModal()">Cancel</button>
-      <button class="btn-primary" onclick="submitOrder()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Send via WhatsApp
-      </button>
+    <div style="text-align:center;margin-top:16px">
+      <a href="../index.html" style="font-size:12px;color:#888;text-decoration:none">Back to Website</a>
     </div>
   </div>
 </div>
 
-<!-- PRODUCT DETAIL MODAL -->
-<div class="modal-overlay" id="productDetailModal" role="dialog" aria-modal="true" aria-label="Product details">
-  <div class="modal detail-modal">
-    <div class="modal-header" style="display:flex;align-items:center;justify-content:space-between">
-      <div>
-        <h3>Product Details</h3>
-        <p>Add to cart or order directly via WhatsApp</p>
-      </div>
-      <button class="btn-close" onclick="closeProductDetail()" aria-label="Close">✕</button>
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <img src="../logo.jpeg" alt="TAH" onerror="this.style.display='none'" />
+    <h2>The Artisans Hub</h2>
+    <p>ADMIN PANEL</p>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Main</div>
+    <button class="sidebar-link active" onclick="showPage('dashboard')">
+      <span>Dashboard</span>
+    </button>
+    <button class="sidebar-link" onclick="showPage('products')">
+      <span>Products</span>
+    </button>
+    <button class="sidebar-link" onclick="showPage('orders')">
+      <span>Orders</span>
+    </button>
+    <div class="nav-section-label">Manage</div>
+    <button class="sidebar-link" onclick="showPage('categories')">
+      <span>Categories</span>
+    </button>
+    <button class="sidebar-link" onclick="showPage('settings')">
+      <span>Settings</span>
+    </button>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="../index.html" target="_blank">View Website</a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <h1 id="pageTitle">Dashboard</h1>
+    <div class="topbar-actions">
+      <span style="font-size:12px;color:var(--text-light)" id="dbStatus">Connecting…</span>
+      <button class="btn btn-primary" onclick="showPage('products'); setTimeout(openAddProduct, 100)">+ Add Product</button>
+      <button class="btn" onclick="adminLogout()">Logout</button>
     </div>
-    <div class="detail-body">
-      <div class="detail-img" id="detailImg"></div>
-      <div class="detail-info">
-        <div class="cat" id="detailCat"></div>
-        <h2 id="detailName"></h2>
-        <div class="code" id="detailCode"></div>
-        <div class="price" id="detailPrice"></div>
-        <p class="desc" id="detailDesc"></p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <button class="btn-primary" onclick="addToCartFromDetail()">🛒 Add to Cart</button>
-          <button class="btn-outline btn-outline-dark" onclick="orderDirectWhatsApp()">💬 Order via WhatsApp</button>
+  </div>
+
+  <!-- DASHBOARD PAGE -->
+  <div class="page active" id="page-dashboard">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon brown">P</div>
+        <div class="stat-info">
+          <div class="value" id="statProducts">—</div>
+          <div class="label">Total Products</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon gold">O</div>
+        <div class="stat-info">
+          <div class="value" id="statOrders">—</div>
+          <div class="label">Total Orders</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green">PD</div>
+        <div class="stat-info">
+          <div class="value" id="statPending">—</div>
+          <div class="label">Pending Orders</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon orange">&#8377;</div>
+        <div class="stat-info">
+          <div class="value" id="statRevenue">—</div>
+          <div class="label">Total Revenue</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:4px">
+      <div class="card">
+        <div class="card-header"><h3>Recent Orders</h3></div>
+        <div class="card-body" id="dashRecentOrders">
+          <div style="text-align:center;padding:20px;color:var(--text-light)">Loading…</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Quick Actions</h3></div>
+        <div class="card-body" style="display:flex;flex-direction:column;gap:12px">
+          <button class="btn btn-primary" onclick="showPage('products'); setTimeout(openAddProduct, 100)" style="justify-content:center">Add New Product</button>
+          <button class="btn btn-success" onclick="showPage('orders')" style="justify-content:center">View All Orders</button>
+          <a href="../index.html" target="_blank" class="btn btn-outline-brown" style="justify-content:center;text-decoration:none">View Live Website</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS PAGE -->
+  <div class="page" id="page-products">
+    <div class="card">
+      <div class="card-header">
+        <h3>All Products</h3>
+        <div style="display:flex;gap:10px;align-items:center">
+          <input type="text" class="search-input" id="productSearch" placeholder="Search products…" oninput="filterProducts()" />
+          <select class="search-input" style="width:160px" id="productCatFilter" onchange="filterProducts()">
+            <option value="">All Categories</option>
+          </select>
+          <button class="btn btn-success" onclick="openAddProduct()">+ Add Product</button>
+        </div>
+      </div>
+      <div class="table-wrapper">
+        <table id="productsTable">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Item Code</th>
+              <th>Price</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody">
+            <tr><td colspan="6" style="text-align:center;padding:30px;color:var(--text-light)">Loading products…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDERS PAGE -->
+  <div class="page" id="page-orders">
+    <div class="card">
+      <div class="card-header">
+        <h3>All Orders</h3>
+        <div style="display:flex;gap:10px;align-items:center">
+          <select class="search-input" style="width:160px" id="orderStatusFilter" onchange="filterOrders()">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="delivered">Delivered</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+          <button class="btn btn-primary" onclick="loadOrders()">Refresh</button>
+        </div>
+      </div>
+      <div class="table-wrapper">
+        <table id="ordersTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Customer</th>
+              <th>Phone</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody">
+            <tr><td colspan="8" style="text-align:center;padding:30px;color:var(--text-light)">Loading orders…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES PAGE -->
+  <div class="page" id="page-categories">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div class="card">
+        <div class="card-header"><h3>Product Categories</h3></div>
+        <div class="card-body" id="categoriesList"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Category Stats</h3></div>
+        <div class="card-body">
+          <p style="color:var(--text-light);font-size:13px;line-height:1.7;margin-bottom:16px">Categories are pre-defined to match the website navigation. Products are organized by these categories automatically.</p>
+          <div style="display:flex;flex-direction:column;gap:8px" id="catStatsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS PAGE -->
+  <div class="page" id="page-settings">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div class="card">
+        <div class="card-header"><h3>Configuration</h3></div>
+        <div class="card-body">
+          <div style="background:#e8f5e9;border:1px solid #4caf50;border-radius:8px;padding:14px;margin-bottom:16px;font-size:13px;color:#2e7d32">
+            <strong>Firebase is connected!</strong><br/>
+            Project: <strong>the-artisans-hub</strong>
+          </div>
+          <div class="form-group">
+            <label>WhatsApp Number (with country code, no +)</label>
+            <input type="text" id="settingWhatsapp" placeholder="916379299336" />
+          </div>
+          <button class="btn btn-primary" onclick="saveSettings()">Save Settings</button>
+          <p style="font-size:11px;color:var(--text-light);margin-top:10px">Firebase config is embedded in the app. Only the WhatsApp number is configurable here.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><h3>Firebase Setup Guide</h3></div>
+        <div class="card-body" style="font-size:13px;line-height:1.8;color:var(--text-light)">
+          <strong style="color:var(--brown-dark)">Step 1:</strong> Go to <a href="https://console.firebase.google.com/project/the-artisans-hub" target="_blank" style="color:var(--brown-light)">Firebase Console</a><br/><br/>
+          <strong style="color:var(--brown-dark)">Step 2:</strong> Enable Firestore Database (Build > Firestore)<br/><br/>
+          <strong style="color:var(--brown-dark)">Step 3:</strong> Set Firestore rules to allow read/write<br/><br/>
+          <strong style="color:var(--brown-dark)">Step 4:</strong> Deploy with: <code style="background:var(--bg);padding:2px 6px;border-radius:4px">firebase deploy</code><br/><br/>
+          <button class="btn btn-outline-brown btn-sm" onclick="showSQLModal()">View Firestore Guide</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- TOAST -->
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- ADD/EDIT PRODUCT MODAL -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="productModalTitle">Add New Product</h3>
+      <button class="btn-close" onclick="closeProductModal()">&#x2715;</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="productId" />
+      <div class="form-grid">
+        <div class="form-group form-full">
+          <label>Product Name *</label>
+          <input type="text" id="productName" placeholder="e.g. Photo Mug - Magic Color Change" />
+        </div>
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="productCategory">
+            <option value="">Select Category</option>
+            <option value="customized-gifts">Customized Gifts</option>
+            <option value="photo-gifts">Photo Gifts</option>
+            <option value="trophies">Trophies</option>
+            <option value="mementos">Mementos</option>
+            <option value="stationery">Stationery</option>
+            <option value="corporate-gifts">Corporate Gifts</option>
+            <option value="wooden">Wooden Items</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Item Code</label>
+          <input type="text" id="productCode" placeholder="e.g. PM-001" />
+        </div>
+        <div class="form-group">
+          <label>Price (&#8377;) *</label>
+          <input type="number" id="productPrice" placeholder="e.g. 499" min="1" step="1" />
+        </div>
+        <div class="form-group form-full">
+          <label>Description</label>
+          <textarea id="productDescription" placeholder="Describe the product, materials, customization options…"></textarea>
+        </div>
+        <div class="form-group form-full">
+          <label>Product Image</label>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <label style="display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border:2px dashed #c8a97a;border-radius:10px;cursor:pointer;background:#fffaf5;font-size:13px;font-weight:600;color:#8B5E3C" for="productImageFile">
+              Choose Image from Device
+              <input type="file" id="productImageFile" accept="image/*" style="display:none" onchange="handleProductImageUpload(this.files[0])" />
+            </label>
+            <img id="imagePreview" style="display:none;max-height:120px;border-radius:10px;object-fit:contain;border:1px solid #eee" alt="Preview" />
+            <div style="font-size:11px;color:#aaa;text-align:center">— or paste image URL below —</div>
+            <input type="url" id="productImageUrl" placeholder="https://example.com/image.jpg"
+              oninput="var p=document.getElementById('imagePreview');if(this.value){p.src=this.value;p.style.display='block'}else{p.style.display='none'}" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline-brown" onclick="closeProductModal()">Cancel</button>
+      <button class="btn btn-success" onclick="saveProduct()">Save Product</button>
+    </div>
+  </div>
+</div>
 
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/916379299336" target="_blank" rel="noopener" class="whatsapp-float" title="Chat with us on WhatsApp" aria-label="Chat on WhatsApp">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+<!-- ORDER DETAIL MODAL -->
+<div class="modal-overlay" id="orderDetailModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Order Details</h3>
+      <button class="btn-close" onclick="closeOrderDetail()">&#x2715;</button>
+    </div>
+    <div class="modal-body" id="orderDetailBody"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline-brown" onclick="closeOrderDetail()">Close</button>
+      <button class="btn btn-success" onclick="updateOrderStatus('confirmed')">Confirm</button>
+      <button class="btn btn-warning" onclick="updateOrderStatus('delivered')">Delivered</button>
+      <button class="btn btn-danger" onclick="updateOrderStatus('cancelled')">Cancel</button>
+    </div>
+  </div>
+</div>
 
-<script type="module" src="./js/main.js"></script>
+<!-- FIRESTORE GUIDE MODAL -->
+<div class="modal-overlay" id="sqlModal">
+  <div class="modal" style="max-width:700px">
+    <div class="modal-header">
+      <h3>Firebase Firestore Guide</h3>
+      <button class="btn-close" onclick="document.getElementById('sqlModal').classList.remove('active')">&#x2715;</button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:12px;color:var(--text-light);margin-bottom:12px">Firebase Firestore setup guide and security rules:</p>
+      <textarea style="width:100%;height:320px;font-family:monospace;font-size:12px;border:1px solid var(--border);border-radius:8px;padding:12px;background:#1e1e1e;color:#d4d4d4;resize:none" readonly id="sqlText"></textarea>
+      <button class="btn btn-primary btn-sm" style="margin-top:12px" onclick="copySql()">Copy Guide</button>
+    </div>
+  </div>
+</div>
 
+<div class="toast" id="toast"></div>
+
+<script type="module" src="admin.js"></script>
 </body>
 </html>
