@@ -1,0 +1,1 @@
+THE ARTISANS HUB - ADMIN LOGIN\n\nAdmin URL: /admin/index.html\nUsername: admin\nPassword: admin123\n\nYou can change credentials in browser localStorage or admin.js
